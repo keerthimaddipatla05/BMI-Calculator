@@ -1,0 +1,48 @@
+# Calculate user's BMI value
+
+def calcBMI(weight, height):
+    print("We will be calculating BMI using the formula: body weight (kg) divided by the square of height (m).")
+    
+    if height == 0.0:
+        return "A person's height cannot be zero. Try again!"
+    else:
+        bmi = weight / (height ** 2)
+        return round(bmi, 2)
+    
+# Categorize BMI
+
+def catBMI(bmi):
+    print(f"Using your BMI ({bmi}) we will determine the BMI category.")
+    if bmi < 18.5:
+        return "Underweight"
+    elif bmi < 24.9:
+        return "Normal weight"
+    elif bmi < 29.9:
+        return "Overweight"
+    else:
+        return "Obesity"
+
+
+# Run the calculator
+
+def main():
+    print("Welcome to the BMI Calculator!")
+    
+    weightIN = input("Enter your weight in kilograms (kg): ")
+    heightIN = input("Enter your height in meters (m): ")
+
+    if not weightIN.replace('.', '', 1).isdigit() or not heightIN.replace('.', '', 1).isdigit():
+        print("Try again with valid numerical inputs for the weight and/or height.")
+        return
+    
+    weight = float(weightIN)
+    height = float(heightIN)
+
+    bmi = calcBMI(weight, height)
+
+    print(f"Your BMI is: {bmi}")
+    print(f"You are classified as: {catBMI(bmi)}")
+
+if __name__ == "__main__":
+    main()
+
